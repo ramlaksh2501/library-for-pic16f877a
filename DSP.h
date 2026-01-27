@@ -53,7 +53,7 @@ char sevenseg_L(unsigned char x){
         0b11011010,0b11110010,0b01100110,0b10110110,0b10111110,0b11100100,0b11111110,0b11110110,0};
 return digit[x];
 }
-void(int x){//maximum three digits only 
+void mux_seven(int x){//maximum three digits only 
 // range:(000-999)
     TRISB=0x00;
     TRISC&=~(0x07);
