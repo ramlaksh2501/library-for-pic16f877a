@@ -15,7 +15,7 @@ info: library for pic16f877a
 #define  SETHIGH(n,port) (port|=1<<(n))
 #define  SETLOW(n,port)  (port&=~(1<<(n)))
 
-
+#ifndef PORTA
 #define PORTA (*((volatile char *) 0X05))
 #define TRISA (*((volatile char *) 0X85))
 #define PORTB (*((volatile char *) 0X06))
@@ -26,6 +26,7 @@ info: library for pic16f877a
 #define TRISD (*((volatile char *) 0X88))
 #define PORTE (*((volatile char *) 0X09))
 #define TRISE (*((volatile char *) 0X89))
+#endif
 
 //we dont need to care about the bankswitching 
 
@@ -63,21 +64,35 @@ void mux_seven(int x){//maximum three digits only
     hundreds=(x/100)%10;
     PORTB=0;
     PORTC=0;
-    for(int i=0;i<10000i++){
         PORTB=sevenseg_L(ones);
         PORTC=0x01;
         __delay_ms(2);
         PORTC=0x00;
         PORTB=sevenseg_L(tens);
         PORTC=0x02;
-        __dealy_ms(2);
+        __delay_ms(2);
         PORTC=0x00;
         PORTB=sevenseg_L(hundreds);
         PORTC=0x04;
         __delay_ms(2);
+        PORTC=0x00; 
+
+}
+void mux_seven_direct(char x,char y,char z){//maximum three digits only 
+// range:(000-999)
+    PORTB=0x00;
+        PORTB=sevenseg_L(x);
+        PORTC=0x01;
+        __delay_ms(2);
         PORTC=0x00;
-    }
-    
+        PORTB=sevenseg_L(y);
+        PORTC=0x02;
+        __delay_ms(2);
+        PORTC=0x00;
+        PORTB=sevenseg_L(y);
+        PORTC=0x04;
+        __delay_ms(2);
+        PORTC=0x00; 
 
 }
 #endif
