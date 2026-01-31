@@ -56,14 +56,17 @@ return digit[x];
 }
 void mux_seven(int x){//maximum three digits only 
 // range:(000-999)
+static char x;
+if(x==0){
     TRISB=0x00;
-    TRISC&=~(0x07);
+    TRISC&=~(0x07);}
     char ones,tens,hundreds;
     ones=x%10;
     tens=(x/10)%10;
     hundreds=(x/100)%10;
     PORTB=0;
     PORTC=0;
+    for(int i;i<10000;i++){
         PORTB=sevenseg_L(ones);
         PORTC=0x01;
         __delay_ms(2);
@@ -75,11 +78,13 @@ void mux_seven(int x){//maximum three digits only
         PORTB=sevenseg_L(hundreds);
         PORTC=0x04;
         __delay_ms(2);
-        PORTC=0x00; 
+        PORTC=0x00; }
 
 }
 void mux_seven_direct(char x,char y,char z){//maximum three digits only 
 // range:(000-999)
+//u must make the port b all output 
+//and port c's three LSBs as input before using this function
     PORTB=0x00;
         PORTB=sevenseg_L(x);
         PORTC=0x01;
@@ -95,4 +100,33 @@ void mux_seven_direct(char x,char y,char z){//maximum three digits only
         PORTC=0x00; 
 
 }
+void general_mux_seven_direct(char x,char y,char z,volatile char *oport,volatile char *cport){//maximum three digits only 
+//range:(000-999)
+//oport is the sevensegment 
+//cport is for selection (LSBs)
+static char x;
+if(x==0){
+    *(oport+80)=0x00;
+     *(cport+80)&=~(0x07);}   
+     for(int m=0;m<10000;i++){
+    *oport=sevenseg_L(x);
+        *cport=0x01;
+        __delay_ms(2);
+        *cport=0x00;
+     *oport=sevenseg_L(y);
+        *cport=0x02;
+        __delay_ms(2);
+        *cport=0x00;
+        *oport=sevenseg_L(y);
+        *cport=0x04;
+        __delay_ms(2);
+        *cport=0x00;}
+}
+void keypad_display()
+void keypad_display_2digit()
+void keypad_sdigit_operation()
+void keypad_4digit_display()
+void keypad_4digit_calc()
+
 #endif
+
