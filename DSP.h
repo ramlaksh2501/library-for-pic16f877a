@@ -5,6 +5,7 @@ info: library for pic16f877a
 
 */
 #ifndef DSP_H
+#define _XTAL_FREQ 20000000
 #define DSP_H
 #define  INPUT  1
 #define  OUTPUT 0
@@ -31,15 +32,17 @@ info: library for pic16f877a
 //we dont need to care about the bankswitching 
 void pinmode(int a,int b);
 void pinwrite(int a,int b);
-char sevenseg_L(unsigned char x);
+unsigned char sevenseg_L(unsigned char x);
 void mux_seven(int x);
 void mux_seven_direct(char x,char y,char z);
-void general_mux_seven_direct(char x,char y,char z,volatile char *oport,volatile char *cport);
+void general_mux_seven_direct(char x,char y,char z,volatile unsigned  char *oport,volatile unsigned char *cport);
 void keypad_display();
-void keypad_display_2digit();
+void keypad_display_2digit();//weak attributes
+//config funciton //do not configure recursively 
 void keypad_sdigit_operation();
 void keypad_4digit_display();
 void keypad_4digit_calc();
+unsigned char keypadread();
 
 #endif
 

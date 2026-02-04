@@ -1,4 +1,4 @@
-//#include<xc8.h>
+#include<xc.h>
 #include "/home/ramlaksh/learnings/pic-library/DSP.h"
 void pinmode(int a,int b)
     {
@@ -18,9 +18,14 @@ void pinwrite(int a,int b)
             SETHIGH(a-33,PORTB);
         }
     }
-char sevenseg_L(unsigned char x){
-    char digit[11]={0b11111100,0b01100000,
-        0b11011010,0b11110010,0b01100110,0b10110110,0b10111110,0b11100100,0b11111110,0b11110110,0};
+unsigned char sevenseg_L(unsigned char x){
+    unsigned char digit[16]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,
+        0x67,//+
+        0x6d,//-
+        0x46,//*
+        0x5e,// /
+        0x3e,//=
+        0x39};//on/c
 return digit[x];
 }
 void mux_seven(int x){//maximum three digits only 
@@ -38,15 +43,15 @@ if(p==0){
     for(int i=0;i<10000;i++){
         PORTB=sevenseg_L(ones);
         PORTC=0x01;
-        __delay_ms(2);
+//        __delay_ms(2);
         PORTC=0x00;
         PORTB=sevenseg_L(tens);
         PORTC=0x02;
-        __delay_ms(2);
+  //      __delay_ms(2);
         PORTC=0x00;
         PORTB=sevenseg_L(hundreds);
         PORTC=0x04;
-        __delay_ms(2);
+    //    __delay_ms(2);
         PORTC=0x00; }
 
 }
@@ -57,37 +62,85 @@ void mux_seven_direct(char x,char y,char z){//maximum three digits only
     PORTB=0x00;
         PORTB=sevenseg_L(x);
         PORTC=0x01;
-        __delay_ms(2);
+//        __delay_ms(2);
         PORTC=0x00;
         PORTB=sevenseg_L(y);
         PORTC=0x02;
-        __delay_ms(2);
+  //      __delay_ms(2);
         PORTC=0x00;
         PORTB=sevenseg_L(y);
         PORTC=0x04;
-        __delay_ms(2);
+   //     __delay_ms(2);
         PORTC=0x00; 
 
 }
-void general_mux_seven_direct(char x,char y,char z,volatile char *oport,volatile char *cport){//maximum three digits only 
+void general_mux_seven_direct(char x,char y,char z,volatile unsigned char *oport,volatile unsigned char *cport){//maximum three digits only 
 //range:(000-999)
 //oport is the sevensegment 
 //cport is for selection (LSBs)
 static char w;
-if(w==0){
+if(!w){
     *(oport+80)=0x00;
      *(cport+80)&=~(0x07);}   
      for(int m=0;m<10000;m++){
     *oport=sevenseg_L(x);
         *cport=0x01;
-        __delay_ms(2);
+ 
         *cport=0x00;
      *oport=sevenseg_L(y);
         *cport=0x02;
-        __delay_ms(2);
-        *cport=0x00;
-        *oport=sevenseg_L(y);
-        *cport=0x04;
-        __delay_ms(2);
+ 
         *cport=0x00;}
+}
+unsigned char keypadread(){
+    //only use the keypad in port b for this function to work 
+    //first four pins are for the output which turn on each row 
+    //second four pins are for the input which reads the keypad
+       char  i=0;
+    while(i<4 ){
+        //selects each row
+        PORTB=(char)(1<<i);
+        for(char j=1;j<=4;j++){
+           
+            if(PORTB & 1<<(3+j)){//checks each coulmn
+                 if(i==0){
+                if(j==1){//clear
+                     return sevenseg_L(15);
+                    
+                }
+                if(j==2){//0
+                    return sevenseg_L(0);
+                    
+                }
+                if(j==3){//=
+                    return sevenseg_L(14);
+                }
+                if(j==4){//+
+                    return sevenseg_L(10);
+                }
+            }
+                 if(i>0){
+}
+
+                     if(j<=3){
+                return  sevenseg_L(((i-1)*3)+(j));//logic to display the right number
+                     }
+                     if(j==4){
+                         if(i==1){ // -
+                             return sevenseg_L(11);
+                 }
+                         if(i==2){// *
+                             return sevenseg_L(12);
+            }
+                         if(i==3){
+                             // division 
+                             return sevenseg_L(13);
+                         }
+      
+    
+
+                     }}}
+                        i++;}
+                        return 0;
+    
 }
