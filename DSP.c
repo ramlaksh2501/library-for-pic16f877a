@@ -96,7 +96,66 @@ unsigned char keypadread(){
     //only use the keypad in port b for this function to work 
     //first four pins are for the output which turn on each row 
     //second four pins are for the input which reads the keypad
-       char  i=0;
+    //the output of this will be equivelent of the decimal value of the key pressed
+    //this function will keep on running until this reads a value from the keypad
+    // + , - , * , \ , on/clear , = are returned as 10 , 11 , 12 , 13 , 14 , 15
+    while(1){char  i=0;
+    while(i<4 ){
+        //selects each row
+        PORTB=(char)(1<<i);
+        for(char j=1;j<=4;j++){
+           
+            if(PORTB & 1<<(3+j)){//checks each coulmn
+                 if(i==0){
+                if(j==1){//clear
+                     return 14;
+                    
+                }
+                if(j==2){//0
+                    return 0;
+                    
+                }
+                if(j==3){//=
+                    return 15;
+                }
+                if(j==4){//+
+                    return 10;
+                }
+            }
+                 if(i>0){
+}
+
+                     if(j<=3){
+                return  ((i-1)*3)+(j);//logic to display the right number
+                     }
+                     if(j==4){
+                         if(i==1){ // -
+                             return 11;
+                 }
+                         if(i==2){// *
+                             return 12;
+            }
+                         if(i==3){
+                             // division 
+                             return 13;
+                         }
+      
+    
+
+                     }}}
+                        i++;}
+                    }     
+    
+}
+
+
+unsigned char keypadread_sevensegment(){
+    //only use the keypad in port b for this function to work 
+    //first four pins are for the output which turn on each row 
+    //second four pins are for the input which reads the keypad
+    //the return value will be converted to sevensegment logic by default 
+    //you just need to assign a port with the return value of this function 
+       while(1){char  i=0;
     while(i<4 ){
         //selects each row
         PORTB=(char)(1<<i);
@@ -141,6 +200,6 @@ unsigned char keypadread(){
 
                      }}}
                         i++;}
-                        return 0;
+                    }     
     
 }
