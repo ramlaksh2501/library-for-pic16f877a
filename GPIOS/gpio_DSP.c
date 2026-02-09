@@ -65,16 +65,16 @@ void port_config(char a,gpio_mode x){
         SETPIN(TRISA);
         break;
         case 'b' :
-        case'B':   SETPIN(TRISA);
+        case'B':   SETPIN(TRISB);
         break;
         case 'c':
-        case 'C' :   SETPIN(TRISA);
+        case 'C' :   SETPIN(TRISC);
         break;
         case 'd' :
-        case 'D' :   SETPIN(TRISA);
+        case 'D' :   SETPIN(TRISD);
         break;
         case 'e' :
-        case 'E' :   SETPIN(TRISA);
+        case 'E' :   SETPIN(TRISE);
         break;  
     
     }}
@@ -91,7 +91,7 @@ void port_config(char a,gpio_mode x){
         case 'C' :SETPOUT(TRISC);
         break;
         case 'd' :
-        case 'D' :SETPOUT(TRISA);
+        case 'D' :SETPOUT(TRISD);
         break;
         case 'e' :
         case 'E' :  SETPOUT(TRISA);
