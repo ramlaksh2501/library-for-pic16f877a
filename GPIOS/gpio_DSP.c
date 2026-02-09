@@ -82,19 +82,19 @@ void port_config(char a,gpio_mode x){
    else{switch(a){
         case 'a':
         case 'A' : ADCON1=0x06;
-        SETOUT(p,TRISA);
+        SETPOUT(TRISA);
         break;
         case 'b' :
-        case'B':SETOUT(p,TRISB);
+        case'B':SETPOUT(TRISB);
         break;
         case 'c':
-        case 'C' :SETOUT(p,TRISC);
+        case 'C' :SETPOUT(TRISC);
         break;
         case 'd' :
-        case 'D' :SETOUT(p,TRISA);
+        case 'D' :SETPOUT(TRISA);
         break;
         case 'e' :
-        case 'E' :  SETOUT(p,TRISA);
+        case 'E' :  SETPOUT(TRISA);
         break;  
     
     }}
@@ -102,19 +102,19 @@ void port_config(char a,gpio_mode x){
 void pin_write(char a,pin_mode x,pin_rd p){
     if(x==HIGH){switch(a){
         case 'a':
-        case 'A' :SETHIGH(p,PORTA);
+        case 'A' :SETPHIGH(PORTA);
         break;
         case 'b' :
-        case'B':SETHIGH(p,PORTB);
+        case'B':SETPHIGH(PORTB);
         break;
         case 'c':
-        case 'C' :SETHIGH(p,PORTC);
+        case 'C' :SETPHIGH(PORTC);
         break;
         case 'd' :
-        case 'D' :SETHIGH(p,PORTD);
+        case 'D' :SETPHIGH(PORTD);
         break;
         case 'e' :
-        case 'E' :  SETHIGH(p,PORTE);
+        case 'E' :  SETPHIGH(PORTE);
         break;  
     
     }}
@@ -122,26 +122,98 @@ void pin_write(char a,pin_mode x,pin_rd p){
    else{switch(a){
         case 'a':
         case 'A' : 
-        SETLOW(p,PORTA);
+        SETPLOW(PORTA);
         break;
         case 'b' :
-        case'B':SETLOW(p,PORTB);
+        case'B':SETPLOW(PORTB);
         break;
         case 'c':
-        case 'C' :SETLOW(p,PORTC);
+        case 'C' :SETPLOW(PORTC);
         break;
         case 'd' :
-        case 'D' :SETLOW(p,PORTD);
+        case 'D' :SETPLOW(PORTD);
         break;
         case 'e' :
-        case 'E' :  SETLOW(p,PORTE);
+        case 'E' :  SETPLOW(PORTE);
         break;  
     
     }}
 }
-void port_write(char a,pin_mode x);
-void pin_read(char a,pin_rd);
-void port_read(char a);
+void port_write(char a,char x){
+    switch(a){
+        case 'a':
+        case 'A' : 
+        PORTA=x;
+        break;
+        case 'b' :
+        case'B':
+        PORTB=x;
+        break;
+        case 'c':
+        case 'C' :
+       PORTC=x;
+        break;
+        case 'd' :
+        case 'D' :PORTD=x;
+        break;
+        case 'e' :
+        case 'E' :  PORTE=x;
+        break;  
+    
+    }
+
+}
+char pin_read(char a,pin_rd p){
+     switch(a){
+        case 'a':
+        case 'A' : 
+       return (PORTA>>p) &1  ;
+        break;
+        case 'b' :
+        case 'B' :
+         return (PORTB>>p) &1  ;
+        break;
+        case 'c':
+        case 'C':
+        return (PORTC>>p) &1  ;
+        break;
+        case 'd' :
+        case 'D' :
+       return (PORTD>>p) &1  ;
+        break;
+        case 'e' :
+        case 'E':
+         return (PORTE>>p) &1  ;
+        break;  
+    
+    }
+
+}
+char port_read(char a){
+    switch(a){
+        case 'a':
+        case 'A' : 
+       return PORTA;
+        break;
+        case 'b' :
+        case 'B':
+        return PORTB;
+        break;
+        case 'c':
+        case 'C':
+       return PORTC;
+        break;
+        case 'd' :
+        case 'D' :
+       return PORTD;
+        break;
+        case 'e' :
+        case 'E' :
+         return PORTE;
+        break;  
+    
+    }
+}
 void config_led(){
     SETPOUT(TRISB);
 }
@@ -156,7 +228,7 @@ void led_blink(){//only in port b (entire port will blink)
 }
 void led_chase(){
     for(char a=0;a<8;a++){
-        PORTB=(char) x<<a;
+        PORTB=(char) 1<<a;
         for(unsigned long int i=0;i<70000;i++);
     }
 }
