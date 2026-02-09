@@ -26,7 +26,7 @@ typedef enum gpio{
     four,
     five,
     six,
-    seven
+    seven=7
 }pin_rd;
 
 /*****chars are signed here so use hex or binary to pass arguments****/
@@ -42,7 +42,7 @@ char port_read(char a);//returns the entire register of the port
 void led_blink();//only in port b (entire port will blink)
 void led_chase();//only in port b
 void config_led();
-
+void delayms_L(unsigned long int x);
 
 
 #endif

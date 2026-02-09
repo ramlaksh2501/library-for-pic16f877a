@@ -102,19 +102,24 @@ void port_config(char a,gpio_mode x){
 void pin_write(char a,pin_mode x,pin_rd p){
     if(x==HIGH){switch(a){
         case 'a':
-        case 'A' :SETPHIGH(PORTA);
+        case 'A' :
+        SETHIGH(p,PORTA);
         break;
         case 'b' :
-        case'B':SETPHIGH(PORTB);
+        case'B':
+        SETHIGH(p,PORTB);
         break;
         case 'c':
-        case 'C' :SETPHIGH(PORTC);
+        case 'C' :
+        SETHIGH(p,PORTC);
         break;
         case 'd' :
-        case 'D' :SETPHIGH(PORTD);
+        case 'D' :
+        SETHIGH(p,PORTD);
         break;
         case 'e' :
-        case 'E' :  SETPHIGH(PORTE);
+        case 'E' :  
+        SETHIGH(p,PORTE);
         break;  
     
     }}
@@ -122,19 +127,23 @@ void pin_write(char a,pin_mode x,pin_rd p){
    else{switch(a){
         case 'a':
         case 'A' : 
-        SETPLOW(PORTA);
+        SETLOW(p,PORTA);
         break;
         case 'b' :
-        case'B':SETPLOW(PORTB);
+        case'B':
+        SETLOW(p,PORTB);
         break;
         case 'c':
-        case 'C' :SETPLOW(PORTC);
+        case 'C' :
+        SETLOW(p,PORTC);
         break;
         case 'd' :
-        case 'D' :SETPLOW(PORTD);
+        case 'D' :
+        SETLOW(p,PORTD);
         break;
         case 'e' :
-        case 'E' :  SETPLOW(PORTE);
+        case 'E' : 
+        SETLOW(p,PORTE);
         break;  
     
     }}
@@ -234,6 +243,11 @@ void led_chase(){
 }
 
 
+void delayms_L(unsigned long int  x){
+    for(unsigned long int i=0;i<=x;i++){
+        for(unsigned long    int y=0;y<200;y++);
+    }
+}
 
 
 
