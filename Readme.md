@@ -25,8 +25,8 @@ Objectives:
 Completed:
 
 * [GPIO header implementation](GPIOS)
-       * [Sevensegment LEDs](Seven-segment)
-       * [4x4 keypad](Keypad)
+    * [Sevensegment LEDs](Seven-segment)
+    * [4x4 keypad](Keypad)
 
 Planned modules:
 
