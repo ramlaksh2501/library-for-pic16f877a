@@ -25,7 +25,7 @@ The project will expand as new microcontroller(uC) concepts are learned and impl
 
 Completed:
 
-* [GPIO header implementation](GPIO)
+* [GPIO header implementation](GPIOS)
 
 Planned modules:
 
