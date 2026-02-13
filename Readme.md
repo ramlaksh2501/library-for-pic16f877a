@@ -25,7 +25,7 @@ The project will expand as new microcontroller(uC) concepts are learned and impl
 
 Completed:
 
-* [GPIO header implementation] ("https://github.com/ramlaksh2501/library-for-pic16f877a/tree/main/GPIOS")
+* [GPIO header implementation] (https://github.com/ramlaksh2501/library-for-pic16f877a/tree/main/GPIOS)
 
 Planned modules:
 
@@ -58,5 +58,5 @@ This is a study‑oriented library and not intended to be a production‑optimiz
 
 ## For more
 
-You can check out my pic16f877a  application programs in [my pic repo] ("https://github.com/ramlaksh2501/learning-PIC-")
-and also i have documented my c learining [check it out]("https://github.com/ramlaksh2501/learn-c")
+You can check out my pic16f877a  application programs in [my pic repo] (https://github.com/ramlaksh2501/learning-PIC-)
+and also i have documented my c learining [check it out](https://github.com/ramlaksh2501/learn-c)
