@@ -2,22 +2,21 @@
 
 A custom  library for the PIC16F877A microcontroller.
 
-This repository is part of a personal effort to gain a deeper understanding of microcontrollers, low‑level hardware interaction, and embedded C programming. The goal of this project is clarity and learning rather than abstraction.
+This repository is part of a personal effort to gain a deeper **understanding of microcontrollers & embedded systems**.
 
 ---
 
 ## About the Project
 
-This repository contains a custom library developed while studying the PIC16F877A microcontroller. All modules are written from scratch to better understand hardware behavior and driver design.
+I am building an  entire  library from stratch.
 
 Objectives:
-
-* Understand peripheral registers and hardware operation
-* Improve embedded C programming skills
-* Reduce dependency on pre‑built frameworks
+* Learn Register level programming (Bare-metal)
+* Understanding **HOW** peripherals, registers and hardware works
+* Improve C programming skills and code optimization skills
 * Learn practical driver implementation techniques
 
-The project will expand as new microcontroller(uC) concepts are learned and implemented.
+
 
 ---
 
@@ -26,6 +25,8 @@ The project will expand as new microcontroller(uC) concepts are learned and impl
 Completed:
 
 * [GPIO header implementation](GPIOS)
+    * [Sevensegment LEDs](Seven-segment)
+    * [4x4 keypad](Keypad)
 
 Planned modules:
 
