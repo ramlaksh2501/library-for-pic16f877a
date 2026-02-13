@@ -25,7 +25,7 @@ The project will expand as new microcontroller(uC) concepts are learned and impl
 
 Completed:
 
-* [GPIO header implementation] (https://github.com/ramlaksh2501/library-for-pic16f877a/tree/main/GPIOS)
+* [GPIO header implementation] (GPIO)
 
 Planned modules:
 
