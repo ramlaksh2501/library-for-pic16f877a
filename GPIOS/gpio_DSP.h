@@ -6,7 +6,7 @@
 #ifndef GPIO
 #define GPIO
 
-typedef enum {
+typedef enum  {
     output=0,
     input
 }gpio_mode;
@@ -41,8 +41,8 @@ char pin_read(char a,pin_rd p);//returns 0 or one
 char port_read(char a);//returns the entire register of the port
 void led_blink();//only in port b (entire port will blink)
 void led_chase();//only in port b
-void config_led();
-void delayms_L(unsigned long int x);
+void config_led();//enables portb 
+void delayms_L(unsigned long int x);//close to one ms at 20 MHz
 
 
 #endif
