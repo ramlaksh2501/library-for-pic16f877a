@@ -14,6 +14,7 @@ Objectives:
 * Learn Register level programming (Bare-metal)
 * Understanding **HOW** peripherals, registers and hardware works
 * Improve C programming skills and code optimization skills
+* Get familiar with **datasheets**
 * Learn practical driver implementation techniques
 
 
