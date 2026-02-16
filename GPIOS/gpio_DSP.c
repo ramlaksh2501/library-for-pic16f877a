@@ -94,7 +94,7 @@ void port_config(char a,gpio_mode x){
         case 'D' :SETPOUT(TRISD);
         break;
         case 'e' :
-        case 'E' :  SETPOUT(TRISA);
+        case 'E' :  SETPOUT(TRISE);
         break;  
     
     }}
