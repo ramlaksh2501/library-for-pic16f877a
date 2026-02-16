@@ -8,7 +8,7 @@ This repository is part of a personal effort to gain a deeper **understanding of
 
 ## About the Project
 
-I am building an  entire  library from stratch.
+I am building an  entire  library from scratch.
 
 Objectives:
 * Learn Register level programming (Bare-metal)
