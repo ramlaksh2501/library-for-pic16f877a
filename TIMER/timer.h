@@ -2,7 +2,7 @@
 #define TIMERS
 
 //blocking
-void L_delay_ms(unsigned long t);
+void L_delay_ms(unsigned long t);//all calculations are made in the 20MHz operation of the controller
 void L_delay_s(unsigned long t);
 
 //non blocking 
