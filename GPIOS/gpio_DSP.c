@@ -237,7 +237,7 @@ void led_blink(){//only in port b (entire port will blink)
 }
 void led_chase(){
     for(char a=0;a<8;a++){
-        PORTB=(char) 1<<a;
+        PORTB=(unsigned char) 1<<a;
         for(unsigned long int i=0;i<70000;i++);
     }
 }

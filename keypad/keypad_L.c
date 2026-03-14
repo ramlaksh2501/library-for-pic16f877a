@@ -1,7 +1,7 @@
 void config_keypad(){
     TRISD=0xf0;
 }
-void scan_keypad(){
+char scan_keypad(){
 
  while(1){char  i=0;
     while(i<4 ){
