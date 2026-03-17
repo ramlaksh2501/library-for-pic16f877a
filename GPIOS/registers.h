@@ -40,8 +40,8 @@ T1 con-
 t2con -
 ccp1con-
 ccp2con -
-pie 1 2 
-pir 1 2  
+pie 1 2 -
+pir 1 2 -
 */
 typedef struct {
     unsigned int PRESCALE   :2;
@@ -49,6 +49,7 @@ typedef struct {
     unsigned int POSTSCALE  :4;
     unsigned int unassigned :1;
 }t2_con ;
+
 typedef struct { 
     unsigned int STATUS     :1;
     unsigned int SOURCE     :1;
@@ -57,11 +58,13 @@ typedef struct {
     unsigned int PRESCALE   :2;
     unsigned int unassigned :2;
 }t1_con;
+
 typedef struct {
     unsigned int MODE       :4;
     unsigned int PWM        :2;
     unsigned int unassigned :2;
 }ccp_con;
+
 typedef struct {
     unsigned int TMR1IE     :1;
     unsigned int TMR2IE     :1;
@@ -82,12 +85,33 @@ typedef struct {
     unsigned int unss       :1;
 }pie_2;
 
+typedef struct {
+    unsigned int TMR1IF     :1;
+    unsigned int TMR2IF     :1;
+    unsigned int CCP1IF     :1;
+    unsigned int SSPIF      :1;
+    unsigned int TXIF       :1;
+    unsigned int RCIF       :1;
+    unsigned int ADIF       :1;
+    unsigned int PSPIF      :1;
+}pir_1;
+
+typedef struct {
+    unsigned int CCP2IF     :1;
+    unsigned int unassigned :2;
+    unsigned int BLCIF      :1;
+    unsigned int EEIF       :1;
+    unsigned int notused    :1;
+    unsigned int CMIF       :1;
+    unsigned int na         :1;
+}pir_2;
 
 #define TMR2CON_BITS ((volatile t2_con *)0x12);
 #define TMR1CON_BITS ((volatile t1_con *)0x10);
-#define CCP1_CON     ((volatile ccp_con*)0x17);
-#define CCP2_CON     ((volatile ccp_con*)0x1D);
-#define PIE_1        ((volatile pie_1  *)0x8C);
+#define CCP1CON_BITS ((volatile ccp_con*)0x17);
+#define CCP2CON_BITS ((volatile ccp_con*)0x1D);
+#define PIE_1_BITS   ((volatile pie_1  *)0x8C);
+#define PIR_1_BITS   ((volatile pir_1  *)0x0C);
 
 
 
