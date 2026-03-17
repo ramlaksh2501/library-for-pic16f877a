@@ -32,7 +32,7 @@
 #define CCPR2L       (*((volatile char *) 0x1B))
 #define CCPR2H       (*((volatile char *) 0x1C))
 #define CCP2CON      (*((volatile char *) 0x1D))
-
+#define INTCON0
 
 
 /* need bitfield for 
