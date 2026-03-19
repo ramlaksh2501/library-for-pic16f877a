@@ -1,10 +1,10 @@
 #ifndef TIMERS
 #define TIMERS
- 
+ #include"/home/ramlaksh/learnings/pic-library/GPIOS/registers.h"
 //blocking
 void L_delay_ms(unsigned long t);//all calculations are made in the 20MHz operation of the controller
 void L_delay_s(unsigned long t);
-void L_pwm(unsigned long long dutycycle,unsigned long period);
+void L_pwm();
 void init_pwm();
 //void __interrupt() void  myhandler();
 static inline void TMR1_ON  ();

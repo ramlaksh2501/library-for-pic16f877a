@@ -1,5 +1,6 @@
 #include "timer.h"
 
+
 void L_delay_ms(unsigned long t){
     OPTION_REG=0x04;
     INTCON=0x00;
@@ -38,10 +39,10 @@ static inline void TMR2_ON  (){  TMR2CON_BITS->STATUS=1;}
 static inline void TMR2_OFF (){  TMR2CON_BITS->STATUS=0;}
 
 void init_pwm(){
-    TRISC=(1<<2);
+   TRISC&=~(1<<2);
     CCP1CON|=0x0F;
     TMR2_OFF();
-    TMR2CON_BITS->PRESCALE=0x2;
+    TMR2CON_BITS->PRESCALE=0x3;
     
     
 
@@ -49,10 +50,10 @@ void init_pwm(){
 
 
 
-void L_pwm(unsigned long long dutycycle ,unsigned long period){
+void L_pwm(){
 
 PR2=0xFF;
-CCPCON1|=(0x03)<<4;
+CCP1CON|=(0x03)<<4;
 CCPR1L=0x7F;
 
 }
