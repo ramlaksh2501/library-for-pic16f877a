@@ -109,12 +109,13 @@ typedef struct {
     unsigned int na         :1;
 }pir_2;
 
-#define TMR2CON_BITS ((volatile t2_con *)0x12);
-#define TMR1CON_BITS ((volatile t1_con *)0x10);
-#define CCP1CON_BITS ((volatile ccp_con*)0x17);
-#define CCP2CON_BITS ((volatile ccp_con*)0x1D);
-#define PIE_1_BITS   ((volatile pie_1  *)0x8C);
-#define PIR_1_BITS   ((volatile pir_1  *)0x0C);
+#define TMR2CON_BITS ((volatile t2_con *)0x12)
+#define TMR1CON_BITS ((volatile t1_con *)0x10)
+#define CCP1CON_BITS ((volatile ccp_con*)0x17)
+#define CCP2CON_BITS ((volatile ccp_con*)0x1D)
+#define PIE_1_BITS   ((volatile pie_1  *)0x8C)
+#define PIR_2_BITS   ((volatile pir_2  *)0x0C)
+
 
 
 
