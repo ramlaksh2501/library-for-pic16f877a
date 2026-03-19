@@ -1,16 +1,16 @@
 #ifndef TIMERS
 #define TIMERS
-#define TMR1_ON  TMR1CON_BITS->STATUS=1;
-#define TMR1_OFF TMR1CON_BITS->STATUS=0;
-#define TMR2_ON  TMR2CON_BITS->STATUS=1;
-#define TMR2_OFF TMR2CON_BITS->STATUS=0; 
+ 
 //blocking
 void L_delay_ms(unsigned long t);//all calculations are made in the 20MHz operation of the controller
 void L_delay_s(unsigned long t);
-void L_pwm(unsigned long long t);
-
-void __interrupt() void  myhandler();
-
+void L_pwm(unsigned long long dutycycle,unsigned long period);
+void init_pwm();
+//void __interrupt() void  myhandler();
+static inline void TMR1_ON  ();
+static inline void TMR1_OFF ();
+static inline void TMR2_ON  ();
+static inline void TMR2_OFF ();
 //non blocking 
 // a function to set time and a fucntions of the isr 
 // for example timersISR(time_delay,funciton to run inside the isr after that time)
