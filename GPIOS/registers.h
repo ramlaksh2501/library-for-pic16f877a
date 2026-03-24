@@ -1,6 +1,6 @@
 #ifndef REGISTERS
 #define REGISTERS
-
+#include<stdint.h>
 
 #define ADCON1       (*((volatile char *) 0x9f))
 #define PORTA        (*((volatile char *) 0X05))
