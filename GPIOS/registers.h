@@ -2,7 +2,7 @@
 #define REGISTERS
 #include<stdint.h>
 
-#define ADCON1       (*((volatile char *) 0x9f))
+
 #define PORTA        (*((volatile char *) 0X05))
 #define TRISA        (*((volatile char *) 0X85))
 #define PORTB        (*((volatile char *) 0X06))
@@ -109,12 +109,41 @@ typedef struct {
     unsigned int na         :1;
 }pir_2;
 
+
+
+typedef struct {
+    unsigned int ADON       :1;
+    unsigned int unassigned :1;
+    unsigned int DONE       :1;
+    unsigned int CHS0       :1;
+    unsigned int CHS1       :1;
+    unsigned int CHS2       :1;
+    unsigned int ADCS0      :1;
+    unsigned int ADCS1      :1;
+
+}adcon_0;
+typedef struct {
+    unsigned int PCFG0      :1;
+    unsigned int PCFG1      :1;
+    unsigned int PCFG2      :1;
+    unsigned int PCFG3      :1;
+    unsigned int unassigned :2;
+    unsigned int ADCS2      :1;
+    unsigned int ADFM       :1;
+}adcon_1;
+
+
+
+
+
 #define TMR2CON_BITS ((volatile t2_con *)0x12)
 #define TMR1CON_BITS ((volatile t1_con *)0x10)
 #define CCP1CON_BITS ((volatile ccp_con*)0x17)
 #define CCP2CON_BITS ((volatile ccp_con*)0x1D)
 #define PIE_1_BITS   ((volatile pie_1  *)0x8C)
 #define PIR_2_BITS   ((volatile pir_2  *)0x0C)
+#define ADCON0_BITS  ((volatile adcon_0*)0x1f)
+#define ADCON1_BITS  ((volatile adcon_1*)0x9f)
 
 
 
