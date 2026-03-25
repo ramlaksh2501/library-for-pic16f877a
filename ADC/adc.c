@@ -13,7 +13,7 @@ uint16_t analog_read(ADC_pin x){
     ADCON0|=1<<2;
     while(ADCON0 & 1<<2);
     uint16_t res=0;
-    res=ADRESH<<7 | ADRESL;
+    res=(uint16_t)ADRESH<<7 | ADRESL;
     return res;
 }
 
