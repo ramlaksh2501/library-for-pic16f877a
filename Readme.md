@@ -28,14 +28,13 @@ Completed:
 * [GPIO header implementation](GPIOS)
     * [Sevensegment LEDs](Seven-segment)
     * [4x4 keypad](Keypad)
-
+    * [Timers](TIMER)
+    * [ADC](ADC)
 Planned modules:
-
-* Timers
+* specific sensor and device drivers
 * Interrupts
-* ADC
 * UART
-* and more
+* and other protocols
 
 ---
 
