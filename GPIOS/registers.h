@@ -148,11 +148,17 @@ typedef struct {
 
 
 
+//for uart 
 
+//need to write a function for serial begin to set baudrate and also for serial read and write 
+#define RCSTA       ((volatile char*)0x18);
+#define TXREG       ((volatile char*)0x19);
+#define TXSTA       ((volatile char*)0x98);
+#define SPBRG       ((volatile char*)0x99);
+#define RCREG       ((volatile char*)0x1a);
+#define RCREG       ((volatile char*)0x1a);
 
-
-
-
+#define     ((volatile *))
 
 
 
