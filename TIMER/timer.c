@@ -48,10 +48,10 @@ void init_pwm(uint16_t duty){//the frequency is fixed in here 1.2khz ,the time p
     CCP1CON|=0x0F;
     TMR2_OFF();
     TMR2CON_BITS->PRESCALE=0x3;  
-    TRISC&=~(1<<2);
+    TRISC&=(uint8_t)~(1<<2);
     if(duty<=1023){
-        CCPR1L=(unsigned char)duty>>2;
-        CCP1CON|=(unsigned char)(duty&0x03)<<4;
+        CCPR1L=(uint8_t)(duty>>2);
+        CCP1CON|=(uint8_t)(duty&0x03)<<4;
     }
     TMR2_ON();
     
@@ -73,7 +73,7 @@ void pwm_config(uint8_t pr2,uint8_t prescale ,uint16_t duty){
         CCPR1L=(unsigned char)duty>>2;
         CCP1CON|=(unsigned char)(duty&0x03)<<4;
     }
-    TMR2CON_BITS->prescale=prescale;
+    TMR2CON_BITS->PRESCALE=prescale;
     PR2=pr2;
     TMR2_ON();
 
