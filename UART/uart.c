@@ -1,7 +1,7 @@
 #include "uart.h"
 
 
-serial_begin(){
+void serial_begin(){
     //for the sender (TX)
     TRISC=(1<<6);
     TRISC=(1<<7);
@@ -14,9 +14,10 @@ serial_begin(){
 }
 
 
-serial_write(char * send){
+void serial_write(char * send){
 	unsigned char i=0;
 	while(send[i]!=0){
 		TXREG=send[i];
+		i++;
 	}
 }
