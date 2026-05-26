@@ -7,7 +7,7 @@
 
 void serial_begin();//default for 9600 baud rate if you want a custom baudrate change the respective registers (refer datasheet)
 void serial_write(char * send);
-char * serial_read();
+char  serial_read();
 
 
 
