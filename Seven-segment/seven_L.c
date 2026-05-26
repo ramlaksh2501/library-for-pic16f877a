@@ -1,4 +1,4 @@
-#include<gpio_DSP.h>
+
 void config_sevenseg(){
        portconfig('b',OUTPUT);
        }
