@@ -5,8 +5,8 @@
 #include "adc.h"
 
 
-uint16_t analog_read(ADC_pin x){
-
+uint16_t analog_read(unsigned char  x){
+    if(x>=0 && x<=7){
     ADCON1|=1<<6; //initializing analog pins
     ADCON0|=(x<<3);//selecting the input pin
     ADCON1|=(1<<7);//making the result left justified
@@ -15,7 +15,8 @@ uint16_t analog_read(ADC_pin x){
     while(ADCON0 & 1<<2);//checking if the conversion completed
     uint16_t res=0;
     res=(uint16_t)ADRESH<<7 | ADRESL;//storing the result
-    return res;
+    return res;}
+    else return 0;
 }
 
 
