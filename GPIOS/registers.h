@@ -136,14 +136,14 @@ typedef struct {
 
 
 
-#define TMR2CON_BITS (*((volatile t2_con *)0x12))
-#define TMR1CON_BITS (*((volatile t1_con *)0x10))
-#define CCP1CON_BITS (*((volatile ccp_con*)0x17))
-#define CCP2CON_BITS (*((volatile ccp_con*)0x1D))
-#define PIE_1_BITS   (*((volatile pie_1  *)0x8C))
-#define PIR_2_BITS   (*((volatile pir_2  *)0x0C))
-#define ADCON0_BITS  (*((volatile adcon_0*)0x1f))
-#define ADCON1_BITS  (*((volatile adcon_1*)0x9f))
+#define TMR2CON_BITS (((volatile t2_con *)0x12))
+#define TMR1CON_BITS (((volatile t1_con *)0x10))
+#define CCP1CON_BITS (((volatile ccp_con*)0x17))
+#define CCP2CON_BITS (((volatile ccp_con*)0x1D))
+#define PIE_1_BITS   (((volatile pie_1  *)0x8C))
+#define PIR_2_BITS   (((volatile pir_2  *)0x0C))
+#define ADCON0_BITS  (((volatile adcon_0*)0x1f))
+#define ADCON1_BITS  (((volatile adcon_1*)0x9f))
 
 
 
@@ -156,9 +156,7 @@ typedef struct {
 #define TXSTA       (*((volatile char*)0x98))
 #define SPBRG       (*((volatile char*)0x99))
 #define RCREG       (*((volatile char*)0x1a))
-#define RCREG       (*((volatile char*)0x1a))
 
-// #define     ((volatile *))
 
 
 
