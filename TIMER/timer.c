@@ -1,6 +1,15 @@
 #include "timer.h"
+/*       || a bad idea to implement a micro second funtion delay ||
+void L_delay_us(unsigned long t){
+    while(i!=t){
+        unsigned char a=0;
+      	a++;
+	a++;
+        i++;
+        }
+}
 
-
+}*/
 
 void L_delay_ms(unsigned long t){
     OPTION_REG=0x04;
@@ -58,7 +67,8 @@ void init_pwm(uint16_t duty){//the frequency is fixed in here 1.2khz ,the time p
    
    
 }
-
+// unimplemented (forbidden one )
+/*
 void pwm_config(uint8_t pr2,uint8_t prescale ,uint16_t duty){
     //parameters: 
     //value for the pr2
@@ -78,7 +88,7 @@ void pwm_config(uint8_t pr2,uint8_t prescale ,uint16_t duty){
     TMR2_ON();
 
     
-}
+}*/
 
 
 static inline void PWM_START(){

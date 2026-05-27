@@ -5,17 +5,23 @@
 #define TMR_PRESCALE_16 0x03
 
 //blocking
-void L_delay_ms(unsigned long t);//all calculations are made in the 20MHz operation of the controller
-void L_delay_s(unsigned long t);
+
+//all calculations are made in the 20MHz operation of the controller
+void L_delay_ms(unsigned long t);//t milli seconds delay
+void L_delay_s(unsigned long t);//t seconds delay
 void L_pwm();
-void init_pwm(uint16_t duty);
-void pwm_config(uint8_t pr2,uint8_t prescale ,uint16_t duty);
+void init_pwm(uint16_t duty);// duty cycle percentage = (DUTY/1024)*100
+//void pwm_config(uint8_t pr2,uint8_t prescale ,uint16_t duty); not implemeneted completely
 //void __interrupt() void  myhandler();
+
+
+
+        // functions to control timers and pwms  
 static inline void TMR1_ON  ();
 static inline void TMR1_OFF ();
 static inline void TMR2_ON  ();
 static inline void TMR2_OFF ();
-static inline void PWM_START();
+static inline void PWM_START();// must call it after the pwm init function 
 static inline void PWM_STOP ();
 //non blocking 
 // a function to set time and a fucntions of the isr 
