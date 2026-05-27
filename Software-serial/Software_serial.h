@@ -14,7 +14,7 @@ void L_delay_1ms(){
 unsigned long t=1;
     OPTION_REG=0x04;
     INTCON=0x00;
-    TMR0=0xf7;
+    TMR0=0xf4;
     unsigned long i=0;
     while(i!=t){
         if(INTCON & (1<<2)){

@@ -1,17 +1,14 @@
-#include"soft.h"
-
-
+#include"Software_serial.h"
 
 
 void soft_serial_begin(){
 	TRISB=~((1<<0));
 	TRISB|=(1<<1);
-
+	PORTB|=0x01;
 }
 
 
 unsigned char soft_serial_read(){
-
 	unsigned char message=0;
 	unsigned char n=0;
 	if(!(PORTB&(1<<1))){
@@ -23,11 +20,6 @@ unsigned char soft_serial_read(){
 	else return 0;
 	return message;
 }
-
-
-
-
-
 
 
 void Soft_serial_write(unsigned char message){
@@ -43,6 +35,13 @@ void Soft_serial_write(unsigned char message){
 		L_delay_1ms();
 		n++;
 	}
-	L_delay_1ms();
 	PORTB|=0x01;
+}
+
+
+void soft_serial_write(unsigned char* message){
+	int i=0;
+	for(i;message[i]!=0;i++){
+		Soft_serial_write(message[i]);
+	}
 }
