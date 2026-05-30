@@ -28,7 +28,7 @@ unsigned char soft_serial_read(){
 	unsigned char n=0;
 	if(!(PORTB&(1<<1))){
 		while(n<=7){
-			bit_dealy();
+			bit_delay();
 			message|=((PORTB&(1<<1))<<n);
 			n++;
 		}	
@@ -39,16 +39,17 @@ unsigned char soft_serial_read(){
 
 
 void Soft_serial_write(unsigned char message){
-			bit_dealy();
+			bit_delay();
 	PORTB&=~(0x01);
-			bit_dealy();
+				bit_delay();
+
 	unsigned char n=0;
 	while(n<=7){
 		if(1&(message>>n))
 			PORTB|=0x01;
 		else
 			PORTB&=~(0x01);
-		bit_dealy();
+		bit_delay();
 		n++;
 	}
 	PORTB|=0x01;
