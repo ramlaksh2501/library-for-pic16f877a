@@ -23,6 +23,7 @@
 #define T2CON        (*((volatile char *) 0x12))    
 #define PR2          (*((volatile char *) 0x92))
 #define PIR1         (*((volatile char *) 0x0C))
+#define PIR          (*((volatile char *) 0x0C))
 #define PIE1         (*((volatile char *) 0x8C)) 
 #define PIR2         (*((volatile char *) 0x0D))
 #define PIE2         (*((volatile char *) 0x8D))
@@ -161,12 +162,12 @@ typedef struct {
 //i2c 
 
 
-SSPCON1             (*((volatile char*)0x14))
-SSPCON2             (*((volatile char*)0x91))
-SSPSTAT             (*((volatile char*)0x94))
-SSPBUF              (*((volatile char*)0x13))
-SSPADD              (*((volatile char*)0x93))
-
+#define SSPCON1     (*((volatile char*)0x14))
+#define SSPCON      (*((volatile char*)0x14))
+#define SSPCON2     (*((volatile char*)0x91))
+#define SSPSTAT     (*((volatile char*)0x94))
+#define SSPBUF      (*((volatile char*)0x13))
+#define SSPADD      (*((volatile char*)0x93))
 
 
 
