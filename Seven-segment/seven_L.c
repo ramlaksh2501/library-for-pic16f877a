@@ -1,6 +1,7 @@
 #include"seven_L.h"
+#include"../GPIOS/gpio_DSP.h"
 void config_sevenseg(){
-       portconfig('b',OUTPUT);
+       port_config('b',OUTPUT);
        }
  
 
@@ -17,7 +18,6 @@ void config_sevenmux(){
     TRISC&=~(0x015);
 }
 void mux_seven(unsigned int x){
-   
    unsigned char ones,tens,hundreds,thousands;
     ones=x%10;
     tens=(x/10)%10;
