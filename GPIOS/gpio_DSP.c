@@ -1,5 +1,6 @@
 #include "gpio_DSP.h"
 
+
 #ifndef GPC
 
 #define GPC
@@ -17,7 +18,7 @@
 #define  SETPHIGH(port) (port=0xff)
 #define  SETPLOW(port)  (port=0x00)
 
-void pin_config(char a,gpio_mode x,pin_rd p){
+void pin_config(char a,unsigned char  x,unsigned char p){
     if(x==INPUT){switch(a){
         case 'a':
         case 'A' : ADCON1=0x06;
@@ -58,7 +59,7 @@ void pin_config(char a,gpio_mode x,pin_rd p){
     
     }}
 }
-void port_config(char a,gpio_mode x){
+void port_config(char a,unsigned char x){
     if(x==INPUT){switch(a){
         case 'a':
         case 'A' : ADCON1=0x06;
@@ -99,7 +100,7 @@ void port_config(char a,gpio_mode x){
     
     }}
 }
-void pin_write(char a,pin_mode x,pin_rd p){
+void pin_write(char a,unsigned char x,unsigned char  p){
     if(x==HIGH){switch(a){
         case 'a':
         case 'A' :
@@ -172,7 +173,7 @@ void port_write(char a,char x){
     }
 
 }
-char pin_read(char a,pin_rd p){
+char pin_read(char a,unsigned char  p){
      switch(a){
         case 'a':
         case 'A' : 
