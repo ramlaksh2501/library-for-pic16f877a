@@ -5,7 +5,7 @@
 
 
 void i2c_begin();
-unsigned char i2c_write(unsigned char address,char * message);
+void i2c_write(unsigned char address, char * message);
 unsigned char * i2c_read(unsigned char address);
 
 
