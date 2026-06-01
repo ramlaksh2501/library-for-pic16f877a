@@ -158,8 +158,14 @@ typedef struct {
 #define RCREG       (*((volatile char*)0x1a))
 
 
+//i2c 
 
 
+SSPCON1             (*((volatile char*)0x14))
+SSPCON2             (*((volatile char*)0x91))
+SSPSTAT             (*((volatile char*)0x94))
+SSPBUF              (*((volatile char*)0x13))
+SSPADD              (*((volatile char*)0x93))
 
 
 
