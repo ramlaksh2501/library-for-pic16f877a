@@ -30,13 +30,12 @@ Completed:
     * [4x4 keypad](Keypad)
     * [Timers](TIMER)
     * [ADC](ADC)
-      
+    * [UART](UART)
 
 Planned modules:
 * specific sensor and device drivers
 * Interrupts
-* UART
-* and other protocols
+* other communication  protocols
 
 ---
 
