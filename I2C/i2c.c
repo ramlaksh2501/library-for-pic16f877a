@@ -46,7 +46,7 @@ void i2c_write(unsigned char address, char * message){
 
 }
 
-char * i2c_read(unsigned char address,char *message,unsigned char size){
+unsigned char * i2c_read(unsigned char address,char *message,unsigned char size){
 	address*=2;
 	address|=1;//making the read bit one and shifting the address towards the msb
 	unsigned char i=0;
@@ -55,25 +55,29 @@ char * i2c_read(unsigned char address,char *message,unsigned char size){
 	SSPCON2|=1;//start bit
 	while(!(PIR1&(1<<3)));
 	PIR1&=~(1<<3);
-	SSPBUF=0x41;//sending address with read bit as high
+	SSPBUF=address;//sending address with read bit as high
 	while(!(PIR1&(1<<3)));
 	PIR1&=~(1<<3);
-	while(i<size){
+	while(1){
 	SSPCON2|=(1<<3);//enable reciever mode as master
-	while(!(PIR1&(1<<3)));
+	  while(!(PIR1&(1<<3)));
 	PIR1&=~(1<<3);
-	while(!SSPSTAT&1);// waiting for the message to be loaded to sspbuf 	
-	*message=SSPBUF;
+    while(!(SSPSTAT&1));// waiting for the message to be loaded to sspbuf 	
 	SSPCON2&=~(1<<5);//ack bit set
+    *(message+i)=SSPBUF;
+    //SSPBUF&=0;//clearing the buffer so the next byte will be shifted here(it must be done )
 	SSPCON2|=(1<<4);//enable ack
 	while(!(PIR1&(1<<3)));
 	PIR1&=~(1<<3);
 	i++;
-	message+=1;
-	}
+    if(i<size) {}
+    else break;} SSPBUF&=0;
+    while(!(PIR1&(1<<3)));
+PIR1&=~(1<<3);
 	SSPCON2|=(1<<2);
 	while(!(PIR1&(1<<3)));
-	PIR1&=~(1<<3);
+PIR1&=~(1<<3);
+    return message;
 
 }
 
