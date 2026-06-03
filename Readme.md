@@ -39,8 +39,10 @@ Planned modules:
 * other communication  protocols
 
 Bit-banging:
-    * [UART](Software-serial)
-    * [I2C](Software-i2c)
+
+   *  [UART](Software-serial)
+
+   * [I2C](Software-i2c)
 Planned :
 * SPI 
  
