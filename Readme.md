@@ -31,12 +31,19 @@ Completed:
     * [Timers](TIMER)
     * [ADC](ADC)
     * [UART](UART)
-
+    * [I2C](I2C)
+  
 Planned modules:
 * specific sensor and device drivers
 * Interrupts
 * other communication  protocols
 
+Bit-banging:
+    * [UART](Software-serial)
+    * [I2C](Software-i2c)
+Planned :
+* SPI 
+ 
 ---
 
 ## Contributing
