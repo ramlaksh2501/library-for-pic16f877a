@@ -25,13 +25,13 @@ Objectives:
 
 Completed:
 
-* [GPIO header implementation](GPIOS)
-    * [Sevensegment LEDs](Seven-segment)
-    * [4x4 keypad](Keypad)
-    * [Timers](TIMER)
-    * [ADC](ADC)
-    * [UART](UART)
-    * [I2C](I2C)
+   * [GPIO header implementation](GPIOS)
+   * [Sevensegment LEDs](Seven-segment)
+   * [4x4 keypad](Keypad)
+   * [Timers](TIMER)
+   * [ADC](ADC)
+   * [UART](UART)
+   * [I2C](I2C)
   
 Planned modules:
 * specific sensor and device drivers
@@ -43,7 +43,9 @@ Bit-banging:
    *  [UART](Software-serial)
 
    * [I2C](Software-i2c)
+
 Planned :
+
 * SPI 
  
 ---
