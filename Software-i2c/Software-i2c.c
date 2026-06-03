@@ -61,3 +61,36 @@ stop_condition();
 
 
 
+void soft_i2c_write(unsigned char address, char * message){
+int bit=0x07;
+address*=2;
+start_condition();
+while(bit>=0){
+if(address&(1<<bit)) data_high();
+else data_low();
+clk_high();
+clk_low();
+bit--;
+}
+clk_high();
+clk_low();
+while(*message){
+bit=0x07;
+while(bit>=0){
+if(*message&(1<<bit)) data_high();
+else data_low();
+clk_high();
+clk_low();
+bit--;
+}
+clk_high();
+clk_low();
+message+=1;}
+
+stop_condition();
+}
+
+
+
+
+
